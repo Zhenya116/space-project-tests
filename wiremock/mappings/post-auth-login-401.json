@@ -1,0 +1,13 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "POST",
+    "url": "/auth/login",
+    "headers": { "Content-Type": { "contains": "application/json" } },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$[?(@.username && @.password)]" },
+      { "matchesJsonPath": "$[?(@.username != 'qa' || @.password != 'qa123')]" }
+    ]
+  },
+  "response": { "status": 401 }
+}
