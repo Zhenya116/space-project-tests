@@ -1,0 +1,5 @@
+{
+  "request": { "method": "GET", "urlPathPattern": "/spaces/(9\\d{5})" },
+  "response": { "status": 404 },
+  "priority": 1
+}

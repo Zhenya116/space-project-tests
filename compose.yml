@@ -2,6 +2,17 @@ services:
   wiremock:
     image: wiremock/wiremock:3.13.1
     ports: ["8080:8080"]
-    command: ["--verbose","--root-dir","/home/wiremock"]
+    command: ["--verbose", "--global-response-templating", "--disable-banner", "--port", "8080"]
     volumes:
-      - ./wiremock:/home/wiremock
+      - "C:/Users/Mvideo/IdeaProjects/space-project/src/test/resources/wiremock:/home/wiremock"
+
+  tests:
+    image: eclipse-temurin:17-jdk
+    working_dir: /project
+    volumes:
+      - ./:/project
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    depends_on:
+      - wiremock
+    command: ["/bin/sh", "-lc", "./gradlew -Denv=test test allureReport"]

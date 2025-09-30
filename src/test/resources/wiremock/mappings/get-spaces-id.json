@@ -1,0 +1,10 @@
+{
+  "request": { "method": "GET", "urlPattern": "/spaces/([0-9]+)" },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "transformers": ["response-template"],
+    "body": "{ \"id\": {{request.path.[1]}}, \"name\": \"Space #{{request.path.[1]}}\" }"
+  },
+  "priority": 5
+}

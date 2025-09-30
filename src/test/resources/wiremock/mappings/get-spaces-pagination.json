@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/spaces",
+    "queryParameters": {
+      "page": { "matches": "^[0-9]+$" },
+      "size": { "matches": "^[0-9]+$" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json",
+      "Content-Encoding": "identity"
+    },
+    "transformers": ["response-template"],
+    "body": "{\n  \"page\": {{request.query.page}},\n  \"size\": {{request.query.size}},\n  \"items\": [\n    {\"id\": {{randomInt min=100 max=999}}, \"name\": \"Space-{{request.query.page}}-A\"},\n    {\"id\": {{randomInt min=100 max=999}}, \"name\": \"Space-{{request.query.page}}-B\"}\n  ],\n  \"total\": 42\n}"
+  },
+  "priority": 1
+}
