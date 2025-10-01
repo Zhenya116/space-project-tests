@@ -24,6 +24,10 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     systemProperty("env", System.getProperty("env", "test"))
+    systemProperty(
+        "baseURI",
+        System.getProperty("baseURI", project.findProperty("baseURI")?.toString() ?: "")
+    )
 }
 
 allure {
