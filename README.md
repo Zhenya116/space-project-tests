@@ -62,5 +62,5 @@
    ./gradlew allureReport
 4. Открыть отчет:
    ```bash
-   open build/reports/allure-report/index.html
+   ./gradlew allureServe
 
